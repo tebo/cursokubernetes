@@ -1,14 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: doscont
   namespace: default
   labels:
-    app: nginx
+    app: doscont
 spec:
   containers:
-    - image:  nginx
-      name:  nginx
-  containers:
-    - image:  alpine
-      name:  linux1
+    - name: nginx
+      image: nginx
+    - name: busybox
+      image: busybox
+      command:
+      - sleep
+      - "3600"

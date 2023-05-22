@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: servidor1
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  containers:
+    - image:  nginx
+      name:  nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: servidor2
+  namespace: default
+  labels:
+    app: nginx
+spec:
+  containers:
+    - image:  nginx
+      name:  nginx
