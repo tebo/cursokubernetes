@@ -1,0 +1,24 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: primerreplicaset
+  labels:
+    app: primerreplicaset
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: contpython1
+        image: python:3.6-alpine
+        command: ['sh', '-c', 'python -m http.server 8082']
+      - name: contpython2
+        image: python:3.6-alpine
+        command: ['sh', '-c', 'python -m http.server 8083']

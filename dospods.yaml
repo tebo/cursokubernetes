@@ -4,7 +4,8 @@ metadata:
   name: servidor1
   namespace: default
   labels:
-    app: nginx
+    produccion: nginx-des
+  # etiqueta 1
 spec:
   containers:
     - image:  nginx
