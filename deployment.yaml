@@ -2,10 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  annotations:
+    kubernetes.io/change-cause: cambio de imagen alpine
   labels:
     app: nginx
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: nginx
@@ -16,6 +18,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.7.9
+        image: nginx
+
         ports:
         - containerPort: 80
