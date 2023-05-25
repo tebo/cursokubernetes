@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: simple-app
-        image: smallapp
+        image: ubuntu
         resources:
           limits:
             memory: "256Mi"
