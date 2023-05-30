@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: test-pv
+  name: test-pv1
   labels:
     mysql: ready
 spec:
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: test-pvc
+  name: test-pvc1
 spec:
   storageClassName: manual
   accessModes:
@@ -56,4 +56,4 @@ spec:
       volumes:
         - name: vol-mysql
           persistentVolumeClaim:
-            claimName: test-pvc
+            claimName: test-pvc1
