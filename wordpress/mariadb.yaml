@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wordpress
+---
+apiVersion: v1
+data:
+  dbname: d29yZHByZXNz
+  dbpassword: cGFzc3dvcmQxMjM0
+  dbrootpassword: cm9vdDEyMzQ=
+  dbuser: dXNlcl93b3JkcHJlc3M=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: mariadb-secret
+  namespace: wordpress
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  namespace: wordpress
+  labels:
+    app: wordpress
+    type: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+      type: database
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        type: database
+    spec:
+      containers:
+        - name: wordpress
+          image: mariadb
+          ports:
+            - containerPort: 3306
+              name: db-port
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: dbuser
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: dbname
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: dbpassword
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: dbrootpassword
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+  namespace: wordpress
+  labels:
+    app: wordpress
+    type: database
+spec:
+  selector:
+    app: wordpress
+    type: database
+  ports:
+  - port: 3306
+    targetPort: db-port
+  type: ClusterIP
