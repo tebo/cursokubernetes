@@ -4,13 +4,13 @@ metadata:
   name: ingress-app
   namespace: wordpress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /wordpress
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - host: misitio.com
       http:
         paths:
-          - path: /wordpress
+          - path: /
             pathType: Prefix
             backend:
               service:
