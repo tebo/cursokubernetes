@@ -5,10 +5,10 @@ metadata:
   labels:
     app: nginx
 spec:
-  revisionHistoryLimit: 2
+  revisionHistoryLimit: 5
   strategy:
     type: RollingUpdate
-  replicas: 2
+  replicas: 45
   selector:
     matchLabels:
       app: nginx
@@ -18,8 +18,8 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx
+      - image: nginx:alpine
         name: contendor-nginx
         ports:
         - name: http
-          containerPort: 80
+          containerPort: 81
