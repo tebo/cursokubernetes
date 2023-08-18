@@ -15,6 +15,38 @@ metadata:
   name: mariadb-secret
   namespace: wordpress
 ---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mariadb-pv
+  namespace: wordpress
+  labels:
+    type: db
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/maria-db"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+  namespace: wordpress
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  selector: 
+    matchLabels: 
+      type: db
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -62,6 +94,13 @@ spec:
                 secretKeyRef:
                   name: mariadb-secret
                   key: dbrootpassword
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              name: vol-mariadb
+      volumes:
+        - name: vol-mariadb
+          persistentVolumeClaim:
+            claimName: mariadb-pv-claim
 ---
 apiVersion: v1
 kind: Service
@@ -78,4 +117,4 @@ spec:
   ports:
   - port: 3306
     targetPort: db-port
-  type: ClusterIP
+  type: NodePort
