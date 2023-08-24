@@ -1,20 +1,26 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-test
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: ingress-test1
 spec:
   rules:
-  - host: app1.mydomain.com
+  - host: app1.misitio.com
     http:
       paths:
-      - backend:
-          serviceName: app-v1
-          servicePort: 8080
-  - host: app2.mydomain.com
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app-v1
+            port:
+              number: 8080
+  - host: app2.misitio.com
     http:
       paths:
-      - backend:
-          serviceName: api-server-svc
-          servicePort: 9090
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: api-server-svc
+            port:
+              number: 9090

@@ -6,7 +6,8 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - host: "midominio.com"
+    http:
       paths:
       - path: /app1
         pathType: Prefix
