@@ -8,8 +8,8 @@ metadata:
   # etiqueta 1
 spec:
   containers:
-    - image:  nginx
-      name:  nginx
+    - image:  httpd
+      name:  apache1
 ---
 apiVersion: v1
 kind: Pod
@@ -20,5 +20,5 @@ metadata:
     app: nginx
 spec:
   containers:
-    - image:  nginx
+    - image:  nginx:alpine
       name:  nginx

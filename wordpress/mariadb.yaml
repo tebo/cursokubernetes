@@ -117,4 +117,4 @@ spec:
   ports:
   - port: 3306
     targetPort: db-port
-  type: NodePort
+  type: ClusterIP

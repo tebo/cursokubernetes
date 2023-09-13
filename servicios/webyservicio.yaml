@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: webserver-simple-deployment
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: webserver-simple-app
@@ -29,6 +29,7 @@ kind: Service
 metadata:
   name: webserver-simple-service
 spec:
+  type: NodePort
   selector:
     app: webserver-simple-app
   ports:

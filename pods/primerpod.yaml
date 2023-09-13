@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: servidor1
+  name: segundopod1
   namespace: default
   labels:
-    app: copias1
+    app1: webserver
+    region: uno
 spec:
   containers:
-    - image:  nginx
-      name:  contenedor1
+    - name: contenedor1
+      image: nginx:alpine

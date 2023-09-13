@@ -18,8 +18,8 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx:alpine
+      - image: nginx
         name: contendor-nginx
         ports:
         - name: http
-          containerPort: 81
+          containerPort: 80

@@ -39,7 +39,7 @@ metadata:
     app: wordpress
     type: frontend
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: wordpress
@@ -103,4 +103,4 @@ spec:
   - name: https-sv-port
     port: 443
     targetPort: https-port
-  type: ClusterIP
+  type: NodePort
