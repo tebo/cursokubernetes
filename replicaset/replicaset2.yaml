@@ -6,7 +6,7 @@ metadata:
   labels:
     app: primerreplicaset
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: frontend

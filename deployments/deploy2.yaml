@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: simple-app-deployment
 spec:
-  replicas: 2
+  replicas: 15
   selector:
     matchLabels:
       app: simple-app
@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: simple-app
-        image: ubuntu
+        image: mediawiki:1.39
         resources:
           limits:
             memory: "256Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
+        - containerPort: 80

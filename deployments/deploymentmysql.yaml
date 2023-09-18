@@ -24,17 +24,3 @@ spec:
           value: "123456"
         ports:
         - containerPort: 3306
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-mysql
-  namespace: default
-spec:
-  type: NodePort
-  ports:
-  - name: mysql
-    port: 8080
-    targetPort: 3306
-  selector:
-    app: podbackend

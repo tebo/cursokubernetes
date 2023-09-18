@@ -5,10 +5,10 @@ metadata:
   labels:
     app: nginx
 spec:
-  revisionHistoryLimit: 5
+  revisionHistoryLimit: 15
   strategy:
     type: RollingUpdate
-  replicas: 45
+  replicas: 30
   selector:
     matchLabels:
       app: nginx

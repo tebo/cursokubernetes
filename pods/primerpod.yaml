@@ -4,8 +4,7 @@ metadata:
   name: segundopod1
   namespace: default
   labels:
-    app1: webserver
-    region: uno
+    repli1: copias1
 spec:
   containers:
     - name: contenedor1
