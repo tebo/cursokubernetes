@@ -5,10 +5,10 @@ metadata:
   labels:
     app: front
 data:
-  test: hola
+  test: "Hola mundo"
   nginx: |
     server {
-        listen       9090;
+        listen       9091;
         server_name  localhost;
 
         location / {
@@ -52,4 +52,3 @@ spec:
             items:
             - key: nginx
               path: default.conf
-            

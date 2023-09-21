@@ -19,7 +19,6 @@ data:
         location = /50x.html {
             root   /usr/share/nginx/html;
         }
-
     }
 ---
 apiVersion: v1
@@ -32,7 +31,7 @@ data:
   db_host: dev.host.local
   db_user: dev_user
   script: |
-    echo DB host es $DB_HOST y DB user es $DB_USER > /usr/share/nginx/html/test.html
+    echo "DB host es $DB_HOST y DB user es $DB_USER" > /usr/share/nginx/html/index.html
 
 ---
 apiVersion: apps/v1
@@ -53,7 +52,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:alpine
+          image: nginx
           env:
             - name: DB_HOST
               valueFrom:
@@ -83,3 +82,17 @@ spec:
             items:
             - key: script
               path: script.sh
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-cmtest
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 9090
+  selector:
+    app: front

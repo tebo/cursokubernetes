@@ -4,7 +4,7 @@ metadata:
   name: test-pd
 spec:
   containers:
-  - image: nginx:alpine
+  - image: ubuntu
     name: test-container
     volumeMounts:
     - mountPath: /var/log/nginx
