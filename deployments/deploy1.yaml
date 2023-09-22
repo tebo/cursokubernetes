@@ -2,13 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-nginx
+  namespace: test-ns
   labels:
     app: nginx
 spec:
   revisionHistoryLimit: 15
   strategy:
     type: RollingUpdate
-  replicas: 30
+  replicas: 5
   selector:
     matchLabels:
       app: nginx
