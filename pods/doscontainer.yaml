@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: nginx
-      image: nginx
+      image: nginx:alpine
     - name: busybox
       image: busybox
       command:

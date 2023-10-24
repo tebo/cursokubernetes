@@ -4,15 +4,15 @@ metadata:
   name: replica1
   namespace: default
 spec:
-  replicas: 10
+  replicas: 5
   selector:
     matchLabels:
-      repli1: copias1
+      stage: produccion
   template:
     metadata:
       labels:
-        repli1: copias1
+        stage: produccion
     spec:
       containers:
-        - image: httpd
+        - image: nginx:alpine
           name:  servidorweb

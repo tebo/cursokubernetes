@@ -4,7 +4,7 @@ metadata:
   name: ingress-test1
 spec:
   rules:
-  - host: app1.misitio.com
+  - host: app1.midominio.com
     http:
       paths:
       - pathType: Prefix
@@ -14,7 +14,7 @@ spec:
             name: app-v1
             port:
               number: 8080
-  - host: app2.misitio.com
+  - host: app2.midominio.com
     http:
       paths:
       - pathType: Prefix

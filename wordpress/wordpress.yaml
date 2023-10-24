@@ -103,4 +103,4 @@ spec:
   - name: https-sv-port
     port: 443
     targetPort: https-port
-  type: NodePort
+  type: ClusterIP

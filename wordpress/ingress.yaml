@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: wordpress.misitio.com
+    - host: wordpress.midominio.com
       http:
         paths:
           - path: "/"
